@@ -40,7 +40,11 @@ class _MyHomePageState extends State<MyHomePage> {
         itemCount: _title.length,
         itemBuilder: (BuildContext context, int index) {
           ItemModel itemModel = _title[index];
-          return Utils.getItemWidget(context, itemModel, () {});
+          return Utils.getItemWidget(context, itemModel, () {
+            Navigator.pushNamed(context, "/${itemModel.name}", arguments: {
+              "title": itemModel.name
+            });
+          });
         },
         physics: BouncingScrollPhysics(),
         susItemBuilder: (BuildContext context, int index) {
